@@ -1,16 +1,14 @@
+import {Box} from "@mui/material";
 
-
-const Gallery = ()=> {
-
+const Gallery=()=>{
     return(
-        <div>
+        <Box>
             <h1>
-                Gallery page
+                This is Gallery Page
             </h1>
-        </div>
 
-    );
-};
+        </Box>
+    )
+}
 
 export default Gallery;
-

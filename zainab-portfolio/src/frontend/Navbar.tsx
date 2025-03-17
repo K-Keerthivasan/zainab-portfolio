@@ -1,80 +1,157 @@
+import React, {useState} from 'react';
 
-
-import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem, Box, Button } from "@mui/material";
-import {useState} from "react";
+import {AppBar, Toolbar, Typography, Box, Button, IconButton} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import {Link} from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
+ import SummarizeIcon from '@mui/icons-material/Summarize';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import CollectionsIcon from '@mui/icons-material/Collections';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
+const Navbar = () => {
 
+    const [anchorEl, setAnchorEl] = useState(null); // For the mobile menu
+    const [isResumeOpen, setIsResumeOpen] = useState(false); // Resume overlay state
+    const [isContactOpen, setIsContactOpen] = useState(false); // Contact overlay state
 
-const Navbar =()=> {
-
-    const [anchorEl,setAnchorEl]=useState(null);
-    const isMenuOpen = Boolean(anchorEl);
-
-
-    const handleMenuOpen = (event) => {
+    // Mobile menu toggle handlers
+    const handleMenuClick = (event) => {
         setAnchorEl(event.currentTarget);
-    }
+    };
 
     const handleMenuClose = () => {
         setAnchorEl(null);
-    }
+    };
 
-    const navItems = ["Home","About"]
+    // Overlay Toggle Checks
 
-    return(
-        <div>
-            <AppBar position="fixed" sx={{
-                backgroundColor: 'rgba(46,28,28,0.8)',
-            }}>
+    // Overlay toggle handlers
+    const toggleContactOverlay = () => {
+        setIsContactOpen((prev) => !prev);
+    };
 
-                <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    {/* Logo */}
-                    <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                        Elite
-                    </Typography>
+    const toggleResumeOverlay = () => {
+        setIsResumeOpen((prev) => !prev);
+    };
 
-                    {/* Desktop Navigation */}
-                    <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
-                        {navItems.map((item) => (
-                            <Button key={item} sx={{ color: "white" }}>
-                                {item}
-                            </Button>
-                        ))}
-                    </Box>
 
-                    {/* Mobile Menu Button */}
+
+
+    const navItems = [
+        {name: 'Home', icon: <HomeIcon/>, link: '/'},
+        {name: 'Gallery', icon: <CollectionsIcon/>, link: '/resume'},
+        {name: 'Resume', icon: <SummarizeIcon/>,action: toggleResumeOverlay },
+        {name: 'Contact', icon: <ContactsIcon/>, link: '/contact'},
+    ]
+
+    return (
+
+        <AppBar position="relative"
+                color="primary"
+                sx={{
+                    backgroundColor: 'rgba(10,10,10,0.8)',
+                    display: 'flex',
+                    flexDirection: {xs: 'column', md: 'row'},
+                    padding: 0,
+
+                }}>
+            <Toolbar
+                sx={{
+                    width: "100%",
+                    display: 'flex',
+                    padding: '0 20px',
+                    justifyContent: "space-between",
+
+                }}
+
+            >
+                <Typography
+                    variant="h3"
+                    sx={{
+                        padding: "10px",
+
+                        fontFamily: "'Roboto', sans-serif",
+                        color: "white",
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                            textShadow: '0 0 10px #a88b34, 0 0 20px #a88b34',
+                        },
+                    }}>
+
+                    Zainab
+                </Typography>
+
+                {/* Menu and Action Icons */}
+
+                {/* Desktop Menu */}
+                <Box sx={{
+                    display: {xs: "none", md: "flex"},
+                    gap: "20px",
+                    marginLeft: "auto"
+                }}>
+                    {navItems.map((item) => (
+                        <Button
+                            key={item.name}
+                            component={Link}
+                            to={item.link}
+                            startIcon={item.icon}
+                            sx={{
+                                color: "white",
+                                fontWeight: "bold",
+                                fontSize: "18px",
+                                "&:hover": {
+                                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                                },
+                            }}
+                        >
+                            {item.name}
+                        </Button>
+                    ))}
+                </Box>
+
+                {/* Mobile Menu */}
+                <Box sx={{
+                    display: {xs: 'flex', md: 'none',},
+                    width: "100%",
+                    justifyContent: "flex-end",
+                    alignItems: "center",
+                    paddingRight: "25px",
+                    overflow: "hidden",
+                }}>
                     <IconButton
-                        edge="end"
-                        color="inherit"
-                        aria-label="menu"
-                        onClick={handleMenuOpen}
-                        sx={{ display: { xs: "block", md: "none" } }}
+                        onClick={handleMenuClick}
+                        sx={{color: '#80ceff', transition: 'color 0.3s ease'}}
                     >
-                        <MenuIcon />
+                        <MenuIcon/>
                     </IconButton>
-
-                    {/* Mobile Menu Items */}
                     <Menu
                         anchorEl={anchorEl}
-                        open={isMenuOpen}
+                        open={Boolean(anchorEl)}
                         onClose={handleMenuClose}
-                        sx={{ display: { xs: "block", md: "none" } }}
                     >
                         {navItems.map((item) => (
-                            <MenuItem key={item} onClick={handleMenuClose}>
-                                {item}
+                            <MenuItem key={item.name} onClick={handleMenuClose}>
+                                <Link to={item.link} style={{
+                                    textDecoration: 'none',
+                                    color: 'inherit',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px'
+                                }}>
+                                    {item.icon}
+                                    {item.name}
+                                </Link>
                             </MenuItem>
                         ))}
                     </Menu>
-                </Toolbar>
+                </Box>
 
-            </AppBar>
+            </Toolbar>
+        </AppBar>
 
-        </div>
-    )
-
-
-}
+    );
+};
 
 export default Navbar;

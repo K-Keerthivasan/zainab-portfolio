@@ -1,16 +1,14 @@
+ import {Box} from "@mui/material";
 
-
-const Home = ()=> {
-
+const Home=()=>{
     return(
-        <div>
+        <Box>
             <h1>
-                Heyy
+                This is home page
             </h1>
-        </div>
 
-    );
-};
+        </Box>
+    )
+}
 
 export default Home;
-
