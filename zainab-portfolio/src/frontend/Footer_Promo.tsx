@@ -1,7 +1,4 @@
 import {AppBar, Toolbar, Typography, IconButton,Box} from "@mui/material";
-import { GitHub, Twitter, LinkedIn, Instagram } from '@mui/icons-material';
-import MenuIcon from "@mui/icons-material/Menu";
-import {Link} from "react-router-dom";
 import CodeOffIcon from '@mui/icons-material/CodeOff';
 
 

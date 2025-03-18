@@ -3,7 +3,12 @@ import { Box, Typography, Button, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close"; // Import Close Icon
 import resumePdf from "../assets/resume.pdf"; // Adjust the path
 
-const ResumeOverlay = ({ isOpen, toggleOverlay }) => {
+interface ResumeOverlayProps {
+    isOpen: boolean;
+    toggleOverlay: () => void;
+}
+
+const ResumeOverlay: React.FC<ResumeOverlayProps> = ({ isOpen, toggleOverlay }) => {
     const [isDownloaded, setIsDownloaded] = useState(false);
 
     const handleDownload = () => {
