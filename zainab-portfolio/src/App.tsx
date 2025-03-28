@@ -7,7 +7,8 @@ import FooterRegular from "./frontend/Footer_Regular.tsx";
 import Home from "./frontend/Home.tsx";
 import Gallery from "./frontend/Gallery.tsx";
 
-function App() {
+
+const App: React.FC = () => {
 
   return (
  <div>
