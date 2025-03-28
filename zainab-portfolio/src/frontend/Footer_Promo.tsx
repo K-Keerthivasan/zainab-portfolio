@@ -8,7 +8,7 @@ const Footer_Promo = () => {
         <AppBar position="relative" color="primary"
                 component="footer"
                 sx={{
-                    backgroundColor: 'rgba(10,10,10,0.8)',
+                    backgroundColor: 'rgba(10,10,10,0.9)',
                     display: 'flex',
                     flexDirection: {xs: 'column', md: 'row'},
                     padding: 0,

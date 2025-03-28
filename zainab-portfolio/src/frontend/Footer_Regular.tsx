@@ -1,5 +1,5 @@
-import {AppBar, Toolbar, Typography, IconButton, Box} from "@mui/material";
- import {Facebook} from "@mui/icons-material";
+import { AppBar, Toolbar, IconButton, Box, Button } from "@mui/material";
+import {Facebook} from "@mui/icons-material";
 import {Instagram} from "@mui/icons-material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import {Mail} from "@mui/icons-material";
@@ -29,13 +29,15 @@ const socialLinks = [
 const FooterRegular = () => {
     return (
 
-        <AppBar position="relative" color="primary"
+        <AppBar position="relative"
+                color="primary"
                 component="footer"
+                elevation={0}
                 sx={{
                     backgroundColor: 'rgba(10,10,10,0.8)',
                     display: 'flex',
                     flexDirection: {xs: 'column', md: 'row'},
-                    padding: 0,
+                    padding: 1,
                     borderRadius: 0,
                     width: '100%',
                 }}>
@@ -50,18 +52,26 @@ const FooterRegular = () => {
                     gap: { xs: "10px", md: "0" }, // Adds spacing in mobile
                 }}
             >
-                <Typography variant="h6"
-                            sx={{
-                                textAlign: { xs: "center", md: "left" },
-                                fontSize: { xs: "12px", md: "16px" },
-                                width: "100%",
-                            }}
+
+                {/* Left Section - Contact Button */}
+                <Button
+                    variant="text"
+                    href="mailto:youremail@example.com" // Replace with your actual email
+                    sx={{
+                        backgroundColor: "#ffae00",
+                        color: "#000",
+                        fontSize: { xs: "12px", md: "25px" },
+                        textTransform: "none",
+                        transition: "all 0.3s ease-in-out",
+                        "&:hover": {
+                            backgroundColor: "#fff2b2",
+                            color: "#000",
+                            transform: "scale(1.05)",
+                        },
+                    }}
                 >
-
-                    Designed and Developed By KK
-
-                </Typography>
-
+                    Contact me
+                </Button>
 
                 {/* Right Section */}
                 <Box sx={{

@@ -4,7 +4,7 @@ import './App.css'
 import Navbar from "./frontend/Navbar.tsx"
 import Footer_Promo from "./frontend/Footer_Promo.tsx";
 import FooterRegular from "./frontend/Footer_Regular.tsx";
-import Home from "./frontend/Home.tsx";
+import Home from "./frontend/Home/Home.tsx";
 import Gallery from "./frontend/Gallery.tsx";
 
 
@@ -16,10 +16,9 @@ const App: React.FC = () => {
      <Router>
          <Navbar/>
 
-         <h1>Hello</h1>
          <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/about" element={<Gallery/>}/>
+        <Route path="/gallery" element={<Gallery/>}/>
 
          </Routes>
 

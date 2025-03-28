@@ -41,37 +41,25 @@ const HeroSection: React.FC = () => {
         <Box
             sx={{
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "100vh",
-                background: "linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0))",
-                padding: "2rem",
+                flexDirection: { xs: "column", md: "row" },
+                background: "linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0))",
+                backgroundColor: "#fffbde",
+                padding: "4rem 2rem 2rem",
+                width: "100%",
+
             }}
         >
             {/* Left Image Section */}
             <Box
                 sx={{
-                    position: "relative",
                     flex: 1,
-                    height: "80%",
+                    minHeight: { xs: "300px", md: "100%" },
                     backgroundImage: "url('https://i.imgur.com/3fwQHHO.jpeg')",
                     backgroundSize: "contain",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center",
                 }}
-            >
-                {/* Gradient Overlay */}
-                <Box
-                    sx={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        background: "linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0))",
-                    }}
-                />
-            </Box>
+            />
 
             {/* Right Bio Section */}
             <Box
@@ -85,11 +73,10 @@ const HeroSection: React.FC = () => {
                     {name}
                 </Typography>
 
-                <Typography variant="h6" sx={{ mt: 2, lineHeight: 1.6, textAlign: "justify" }}>
+                <Typography variant="h6" sx={{ mt: 2, lineHeight: 1.6, textAlign: "justify", color:"#000000" }}>
                     {formatText(introduction)}
                 </Typography>
 
-                {/* Key Roles Section */}
                 {keyRoles.map((role, index) => (
                     <Typography key={index} variant="h6">
                         {formatText(role)}
@@ -100,7 +87,6 @@ const HeroSection: React.FC = () => {
                     {formatText(strengths)}
                 </Typography>
 
-                {/* Educational Roles Section */}
                 {educationalRoles.map((role, index) => (
                     <Typography key={index} variant="h6">
                         {formatText(role)}
